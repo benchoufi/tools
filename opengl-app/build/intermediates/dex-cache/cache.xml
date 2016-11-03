@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/OpenGLTestApp/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="e70f608219ed6b974644c333249ab2bb7b71de98">
+        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/OpenGLTestApp/app/build/intermediates/pre-dexed/debug/classes-029b844588d6aa42ecec357b87fc311ed8ac8c91.jar" />
+    </item>
+    <item
+        jar="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/OpenGLTestApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/libs/internal_impl-24.0.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="fcaf463e10e69c1923ccf1edeba3b4196d239e00">
+        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/OpenGLTestApp/app/build/intermediates/pre-dexed/debug/internal_impl-24.0.0-49fbab2222813ce47604a8329444354c2681a1cd.jar" />
+    </item>
+    <item
+        jar="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/OpenGLTestApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
+        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/OpenGLTestApp/app/build/intermediates/pre-dexed/debug/classes-30a88321d8d3c63cf9d40e799646c9a56d54cadf.jar" />
+    </item>
+    <item
+        jar="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/OpenGLTestApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="0874286cc2fd88d54fdf130e9d5372730da6de97">
+        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/OpenGLTestApp/app/build/intermediates/pre-dexed/debug/classes-fc4be7fc0333df1f56b789bdb3c784149605dae9.jar" />
+    </item>
+    <item
+        jar="/Users/mehdibenchoufi/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.0.0/support-annotations-24.0.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="2943c74db6d4346ab8c6531adac91fa05c137c40">
+        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/OpenGLTestApp/app/build/intermediates/pre-dexed/debug/support-annotations-24.0.0-efcc588ab27fb7d7d883913454b0eb33977c3550.jar" />
+    </item>
+    <item
+        jar="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/OpenGLTestApp/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="3bd97cfefd783e9de1dd1c30574a6adb44b4409b">
+        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/OpenGLTestApp/app/build/intermediates/pre-dexed/debug/classes-3a9d997a62a199a7382e946b9835a7321c1a2435.jar" />
+    </item>
+
+</items>
