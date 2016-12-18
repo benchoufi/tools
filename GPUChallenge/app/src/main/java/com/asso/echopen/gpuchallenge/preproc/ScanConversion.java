@@ -285,7 +285,7 @@ public class ScanConversion {
         }
     }
 
-    public void launchScript(int envelope_data[],   /*  The envelope detected and log-compressed data */
+    public int[] launchScript(int envelope_data[],   /*  The envelope detected and log-compressed data */
                              int N_samples,        /*  Number of samples in one envelope line        */
 
                              int index_samp_line[], /*  Index for the data sample number              */
@@ -304,16 +304,26 @@ public class ScanConversion {
         indexSampLine.copyFrom(index_samp_line);
         scriptC_scanconversion.bind_index_samp_line(indexSampLine);
 
+
         Allocation imageIndex = Allocation.createSized(renderScript, Element.I32(renderScript), image_index.length);
         imageIndex.copyFrom(image_index);
-        scriptC_scanconversion.bind_image_index(imageIndex);
 
         Allocation weightCoef = Allocation.createSized(renderScript, Element.F64(renderScript), weight_coef.length);
         weightCoef.copyFrom(weight_coef);
         scriptC_scanconversion.bind_weight_coef(weightCoef);
 
+        Allocation output_image = Allocation.createSized(renderScript, Element.I32(renderScript), image.length);
+        output_image.copyFrom(image);
+        scriptC_scanconversion.bind_output_image(output_image);
+
         scriptC_scanconversion.invoke_set_PixelsCount(N_values);
         scriptC_scanconversion.invoke_set_NumLines(N_samples);
+
+        scriptC_scanconversion.invoke_process(imageIndex);
+
+        scriptC_scanconversion.get_output_image().copyTo(image);
+
+        return image;
     }
 
     public static void compute_tables() {
@@ -361,7 +371,7 @@ public class ScanConversion {
 
         long startTime2 = System.nanoTime();
         launchScript(envelope_data, N_samples, this.indexData, this.indexImg, this.weight, this.numPixels, image);
-        make_interpolation(envelope_data, N_samples, this.indexData, this.indexImg, this.weight, this.numPixels, image);
+        //make_interpolation(envelope_data, N_samples, this.indexData, this.indexImg, this.weight, this.numPixels, image);
 
         // end of performance measure
         for (int i = 0; i < Nz; i++) {
@@ -371,7 +381,6 @@ public class ScanConversion {
         }
 
         long estimatedTime2 = System.nanoTime() - startTime2;
-        System.out.println("Timer compute interpolation " + estimatedTime2);
         return num;
     }
 }
