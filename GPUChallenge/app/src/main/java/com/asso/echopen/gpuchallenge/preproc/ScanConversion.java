@@ -317,9 +317,6 @@ public class ScanConversion {
         make_interpolation(envelope_data, N_samples, this.indexData, this.indexImg, this.weight, this.numPixels, image);
 
         // end of performance measure
-        System.out.println("measure num" + num.length);
-        System.out.println("measure image" + image.length);
-        System.out.println("measure");
         for (int i = 0; i < Nz; i++) {
             for (int j = 0; j < Nx ; j++) {
                 num[j*Nz + i] = image[j + Nx*i];

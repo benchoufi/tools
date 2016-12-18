@@ -2,53 +2,175 @@
 <items version="2" >
 
     <item
-        jar="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
-        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/pre-dexed/debug/classes-c8343cc10a71a9f9e19096c386b00d8d36eae53e.jar" />
-    </item>
-    <item
-        jar="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.0.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="e70f608219ed6b974644c333249ab2bb7b71de98">
-        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/pre-dexed/debug/classes-4dbb87cc96cf66ee232586936abe6af37eeade27.jar" />
-    </item>
-    <item
-        jar="/Users/mehdibenchoufi/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="6975da39a7040257bd51d21a231b76c915872d38">
-        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/pre-dexed/debug/javax.inject-1-0819ba4ed51ab95844491e4224a75d0fcd95efa5.jar" />
-    </item>
-    <item
+        is-multidex="true"
         jar="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/jars/classes.jar"
-        jumboMode="false"
+        jumboMode="true"
+        optimize="true"
         revision="23.0.2"
         sha1="0874286cc2fd88d54fdf130e9d5372730da6de97">
-        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/pre-dexed/debug/classes-176d6aa5486f4638e46fed4fd74f73c9dfb16ffe.jar" />
+        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-24.0.0_176d6aa5486f4638e46fed4fd74f73c9dfb16ffe/classes.dex" />
     </item>
     <item
+        is-multidex="true"
         jar="/Users/mehdibenchoufi/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.0.0/support-annotations-24.0.0.jar"
-        jumboMode="false"
-        revision="23.0.2"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
         sha1="2943c74db6d4346ab8c6531adac91fa05c137c40">
-        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/pre-dexed/debug/support-annotations-24.0.0-efcc588ab27fb7d7d883913454b0eb33977c3550.jar" />
+        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.0.0_efcc588ab27fb7d7d883913454b0eb33977c3550/classes.dex" />
     </item>
     <item
-        jar="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.0.0/jars/classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="/Users/mehdibenchoufi/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6975da39a7040257bd51d21a231b76c915872d38">
+        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/transforms/dex/debug/folders/1000/10/javax.inject-1_0819ba4ed51ab95844491e4224a75d0fcd95efa5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
         revision="23.0.2"
-        sha1="3bd97cfefd783e9de1dd1c30574a6adb44b4409b">
-        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/pre-dexed/debug/classes-4f3f4c9a836884277cd91c01af69ac1086bfef36.jar" />
+        sha1="e70f608219ed6b974644c333249ab2bb7b71de98">
+        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-24.0.0_4dbb87cc96cf66ee232586936abe6af37eeade27/classes.dex" />
     </item>
     <item
+        is-multidex="true"
         jar="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/libs/internal_impl-24.0.0.jar"
-        jumboMode="false"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fcaf463e10e69c1923ccf1edeba3b4196d239e00">
+        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.0.0_db5dee161b177856ab5cf97a2e852769fd395240/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="7293283bf5f03b3a4be03fb77b19663c969b7b99">
+        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_460848320ab40a0a12d9fc42df5773192e223bb7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7293283bf5f03b3a4be03fb77b19663c969b7b99">
+        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_460848320ab40a0a12d9fc42df5773192e223bb7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/libs/internal_impl-24.0.0.jar"
+        jumboMode="true"
+        optimize="true"
         revision="23.0.2"
         sha1="fcaf463e10e69c1923ccf1edeba3b4196d239e00">
-        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/pre-dexed/debug/internal_impl-24.0.0-db5dee161b177856ab5cf97a2e852769fd395240.jar" />
+        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.0.0_db5dee161b177856ab5cf97a2e852769fd395240/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
+        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-24.0.0_c8343cc10a71a9f9e19096c386b00d8d36eae53e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3bd97cfefd783e9de1dd1c30574a6adb44b4409b">
+        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-24.0.0_4f3f4c9a836884277cd91c01af69ac1086bfef36/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="00830111eb0c6fc95bc6447988ce226ba93eee1d">
+        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_67f7c9ae8462c812fcc45b5e6880e84c41f1a4e7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0874286cc2fd88d54fdf130e9d5372730da6de97">
+        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-24.0.0_176d6aa5486f4638e46fed4fd74f73c9dfb16ffe/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mehdibenchoufi/Library/Android/sdk/build-tools/25.0.2/renderscript/lib/renderscript-v8.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="05668b8cd6c7b07f152b6a5b4c6cff620817ba0f">
+        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/transforms/dex/debug/folders/1000/10/renderscript-v8_adda0571323f91c24c52b12476848257d4062335/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e70f608219ed6b974644c333249ab2bb7b71de98">
+        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-24.0.0_4dbb87cc96cf66ee232586936abe6af37eeade27/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="3bd97cfefd783e9de1dd1c30574a6adb44b4409b">
+        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-24.0.0_4f3f4c9a836884277cd91c01af69ac1086bfef36/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="00830111eb0c6fc95bc6447988ce226ba93eee1d">
+        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_67f7c9ae8462c812fcc45b5e6880e84c41f1a4e7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
+        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-24.0.0_c8343cc10a71a9f9e19096c386b00d8d36eae53e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mehdibenchoufi/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.0.0/support-annotations-24.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="2943c74db6d4346ab8c6531adac91fa05c137c40">
+        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.0.0_efcc588ab27fb7d7d883913454b0eb33977c3550/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mehdibenchoufi/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="6975da39a7040257bd51d21a231b76c915872d38">
+        <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/transforms/dex/debug/folders/1000/10/javax.inject-1_0819ba4ed51ab95844491e4224a75d0fcd95efa5/classes.dex" />
     </item>
 
 </items>
