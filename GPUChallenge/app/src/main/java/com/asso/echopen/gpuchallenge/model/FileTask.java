@@ -1,6 +1,7 @@
 package com.asso.echopen.gpuchallenge.model;
 
 import android.app.Activity;
+import android.support.v8.renderscript.RenderScript;
 import android.util.Log;
 
 import com.asso.echopen.gpuchallenge.preproc.ScanConversion;
@@ -19,13 +20,21 @@ public class FileTask extends AbstractDataTask {
 
     public static int counter = 0;
 
+    private RenderScript renderScript;
+
     public FileTask(Activity activity, MainActionController mainActionController, ScanConversion scanConversion, InputStream inputStream) {
         super(activity, mainActionController, scanConversion);
         InputStreamReader isReader = new InputStreamReader(inputStream);
         data = new Data(isReader);
         scanconversion = new ScanConversion(data);
         ScanConversion.compute_tables();
+        createScript();
     }
+
+    private void createScript() {
+        renderScript = RenderScript.create(activity);
+        scanconversion.setRenderScript(renderScript);
+}
 
     @Override
     protected Void doInBackground(Void... Voids) {

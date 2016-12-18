@@ -1,10 +1,17 @@
 package com.asso.echopen.gpuchallenge.preproc;
 
+import android.support.v8.renderscript.Allocation;
+import android.support.v8.renderscript.Element;
+import android.support.v8.renderscript.RenderScript;
+import android.support.v8.renderscript.Type;
+
+import com.asso.echopen.gpuchallenge.ScriptC_scanconversion;
 import com.asso.echopen.gpuchallenge.model.Data;
 import com.asso.echopen.gpuchallenge.utils.Constants;
 
 import java.io.IOException;
 import java.util.Random;
+import java.util.concurrent.ExecutionException;
 
 
 /**
@@ -89,6 +96,10 @@ public class ScanConversion {
         return numPixels;
     }
 
+    private RenderScript renderScript;
+
+    private ScriptC_scanconversion scriptC_scanconversion;
+
     public ScanConversion() {
     }
 
@@ -105,6 +116,10 @@ public class ScanConversion {
         if (envelope_data == null) {
             throw new IllegalArgumentException("The Envelope Data must not be null");
         }
+    }
+
+    public void setRenderScript(RenderScript renderScript) {
+        this.renderScript = renderScript;
     }
 
     public int[] getDataFromInterpolation() throws IOException {
@@ -270,6 +285,37 @@ public class ScanConversion {
         }
     }
 
+    public void launchScript(int envelope_data[],   /*  The envelope detected and log-compressed data */
+                             int N_samples,        /*  Number of samples in one envelope line        */
+
+                             int index_samp_line[], /*  Index for the data sample number              */
+                             int image_index[],     /*  Index for the image matrix                    */
+                             double weight_coef[],     /*  The weight table                              */
+                             int N_values,         /*  Number of values to calculate in the image      */
+
+                             int image[]) {
+        scriptC_scanconversion = new ScriptC_scanconversion(renderScript);
+
+        Allocation envelopeData = Allocation.createSized(renderScript, Element.I32(renderScript), envelope_data.length);
+        envelopeData.copyFrom(envelope_data);
+        scriptC_scanconversion.bind_envelope_data(envelopeData);
+
+        Allocation indexSampLine = Allocation.createSized(renderScript, Element.I32(renderScript), index_samp_line.length);
+        indexSampLine.copyFrom(index_samp_line);
+        scriptC_scanconversion.bind_index_samp_line(indexSampLine);
+
+        Allocation imageIndex = Allocation.createSized(renderScript, Element.I32(renderScript), image_index.length);
+        imageIndex.copyFrom(image_index);
+        scriptC_scanconversion.bind_image_index(imageIndex);
+
+        Allocation weightCoef = Allocation.createSized(renderScript, Element.F64(renderScript), weight_coef.length);
+        weightCoef.copyFrom(weight_coef);
+        scriptC_scanconversion.bind_weight_coef(weightCoef);
+
+        scriptC_scanconversion.invoke_set_PixelsCount(N_values);
+        scriptC_scanconversion.invoke_set_NumLines(N_samples);
+    }
+
     public static void compute_tables() {
         double start_depth = Constants.PreProcParam.RADIAL_IMG_INIT; /*  Depth for start of image in meters    */
         double image_size = Constants.PreProcParam.IMAGE_SIZE;      /*  Size of image in meters               */
@@ -314,6 +360,7 @@ public class ScanConversion {
         envelope_data[random_index] = random.nextInt(255);
 
         long startTime2 = System.nanoTime();
+        launchScript(envelope_data, N_samples, this.indexData, this.indexImg, this.weight, this.numPixels, image);
         make_interpolation(envelope_data, N_samples, this.indexData, this.indexImg, this.weight, this.numPixels, image);
 
         // end of performance measure
