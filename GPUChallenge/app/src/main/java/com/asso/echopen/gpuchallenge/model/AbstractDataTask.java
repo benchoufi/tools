@@ -1,0 +1,54 @@
+package com.asso.echopen.gpuchallenge.model;
+
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import android.util.Log;
+
+import com.asso.echopen.gpuchallenge.preproc.ScanConversion;
+import com.asso.echopen.gpuchallenge.ui.MainActionController;
+import com.asso.echopen.gpuchallenge.utils.Constants;
+
+import java.io.IOException;
+
+/**
+ * Core class of data collecting routes. Whether the protocol is chosen to be TCP, UDP or fetching data from local,
+ * the dedicated classes inherits from @this
+ */
+abstract public class AbstractDataTask extends AsyncTask<Void, Void, Void> {
+
+    protected Activity activity;
+
+    protected ScanConversion scanconversion;
+
+    protected MainActionController mainActionController;
+
+    public AbstractDataTask(Activity activity, MainActionController mainActionController, ScanConversion scanConversion) {
+        this.scanconversion = scanConversion;
+        this.activity = activity;
+        this.mainActionController = mainActionController;
+    }
+
+    protected void refreshUI(ScanConversion scanconversion) throws IOException {
+        int[] scannedArray = scanconversion.getDataFromInterpolation();
+
+        int[] colors = new int[scannedArray.length];
+        int pixel;
+        for(int i = 0; i < scannedArray.length; i++) {
+            pixel = scannedArray[i];
+            colors[i] = (pixel | (pixel << 8) | (pixel << 16)) | 0xFF000000;
+        }
+
+        final Bitmap bitmap = Bitmap.createBitmap(colors, Constants.PreProcParam.SCREEN_x, Constants.PreProcParam.SCREEN_z, Bitmap.Config.ARGB_8888);
+        try {
+            activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mainActionController.displayMainFrame(bitmap);
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
