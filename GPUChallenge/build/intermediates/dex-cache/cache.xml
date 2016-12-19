@@ -115,7 +115,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="7fdb151e2ff20cb03cb25061e649d3a2c6afa9e5">
+        sha1="81b755c4a3409a24ca66cfbc89e1fa621a1eac97">
         <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_460848320ab40a0a12d9fc42df5773192e223bb7/classes.dex" />
     </item>
     <item
@@ -124,7 +124,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="adaed4e7a03600f0b46d449e42c8cb1237a9d501">
+        sha1="5be37e6359728b7a6f345793d6fdab104f2339bc">
         <dex dex="/Users/mehdibenchoufi/Downloads/android-testing-checkpoints/GPUChallenge/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_67f7c9ae8462c812fcc45b5e6880e84c41f1a4e7/classes.dex" />
     </item>
     <item

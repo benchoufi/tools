@@ -307,6 +307,7 @@ public class ScanConversion {
 
         Allocation imageIndex = Allocation.createSized(renderScript, Element.I32(renderScript), image_index.length);
         imageIndex.copyFrom(image_index);
+        scriptC_scanconversion.bind_image_index(imageIndex);
 
         Allocation weightCoef = Allocation.createSized(renderScript, Element.F64(renderScript), weight_coef.length);
         weightCoef.copyFrom(weight_coef);
@@ -319,7 +320,10 @@ public class ScanConversion {
         scriptC_scanconversion.invoke_set_PixelsCount(N_values);
         scriptC_scanconversion.invoke_set_NumLines(N_samples);
 
+        long startTime2 = System.nanoTime();
         scriptC_scanconversion.invoke_process(imageIndex);
+        long estimatedTime = System.nanoTime() - startTime2;
+        System.out.println("this is an estimate" + estimatedTime);
 
         scriptC_scanconversion.get_output_image().copyTo(image);
 
@@ -372,8 +376,8 @@ public class ScanConversion {
         long startTime2 = System.nanoTime();
         launchScript(envelope_data, N_samples, this.indexData, this.indexImg, this.weight, this.numPixels, image);
         //make_interpolation(envelope_data, N_samples, this.indexData, this.indexImg, this.weight, this.numPixels, image);
-
         // end of performance measure
+
         for (int i = 0; i < Nz; i++) {
             for (int j = 0; j < Nx ; j++) {
                 num[j*Nz + i] = image[j + Nx*i];
