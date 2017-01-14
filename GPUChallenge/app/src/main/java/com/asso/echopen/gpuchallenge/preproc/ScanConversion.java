@@ -294,6 +294,7 @@ public class ScanConversion {
                              int N_values,         /*  Number of values to calculate in the image      */
 
                              int image[]) {
+
         scriptC_scanconversion = new ScriptC_scanconversion(renderScript);
 
         Allocation envelopeData = Allocation.createSized(renderScript, Element.I32(renderScript), envelope_data.length);
@@ -309,6 +310,15 @@ public class ScanConversion {
         imageIndex.copyFrom(image_index);
         scriptC_scanconversion.bind_image_index(imageIndex);
 
+        int[] index_counter = new int[N_values];
+        int i;
+        for (i = 0; i <N_values;i++) {
+            index_counter[i] = i;
+        }
+        Allocation indexCounter = Allocation.createSized(renderScript, Element.I32(renderScript), index_counter.length);
+        indexCounter.copyFrom(index_counter);
+        scriptC_scanconversion.bind_index_counter(indexCounter);
+
         Allocation weightCoef = Allocation.createSized(renderScript, Element.F64(renderScript), weight_coef.length);
         weightCoef.copyFrom(weight_coef);
         scriptC_scanconversion.bind_weight_coef(weightCoef);
@@ -320,10 +330,12 @@ public class ScanConversion {
         scriptC_scanconversion.invoke_set_PixelsCount(N_values);
         scriptC_scanconversion.invoke_set_NumLines(N_samples);
 
+        //scriptC_scanconversion.invoke_set_PixelsCount(10);
+
         long startTime2 = System.nanoTime();
-        scriptC_scanconversion.invoke_process(imageIndex);
+        scriptC_scanconversion.invoke_process(indexCounter);
         long estimatedTime = System.nanoTime() - startTime2;
-        System.out.println("this is an estimate" + estimatedTime);
+        System.out.println("this is an estimate " + estimatedTime);
 
         scriptC_scanconversion.get_output_image().copyTo(image);
 
