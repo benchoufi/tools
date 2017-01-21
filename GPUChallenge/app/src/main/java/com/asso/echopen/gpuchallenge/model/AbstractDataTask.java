@@ -30,7 +30,10 @@ abstract public class AbstractDataTask extends AsyncTask<Void, Void, Void> {
     }
 
     protected void refreshUI(ScanConversion scanconversion) throws IOException {
+        long startTime0 = System.nanoTime();
         int[] scannedArray = scanconversion.getDataFromInterpolation();
+        long scanconversion_estimatedTime = System.nanoTime() - startTime0;
+        //System.out.println("set scan conversion estimate " + scanconversion_estimatedTime);
 
         int[] colors = new int[scannedArray.length];
         int pixel;

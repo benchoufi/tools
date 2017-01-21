@@ -40,9 +40,17 @@ public class FileTask extends AbstractDataTask {
     protected Void doInBackground(Void... Voids) {
         while (true) {
             //For fun : scanconversion.randomize();
+            long startTime0 = System.nanoTime();
             scanconversion.setData(data);
+            long set_data_estimatedTime = System.nanoTime() - startTime0;
+            System.out.println("set data time estimate " + set_data_estimatedTime);
             try {
+                long startTime1 = System.nanoTime();
                 refreshUI(scanconversion);
+                long refresh_estimatedTime = System.nanoTime() - startTime1;
+                System.out.println("set data refresh estimate " + refresh_estimatedTime);
+                long estimatedTime = System.nanoTime() - startTime0;
+                System.out.println("global time estimate " + estimatedTime);
             } catch (IOException e) {
                 e.printStackTrace();
             }

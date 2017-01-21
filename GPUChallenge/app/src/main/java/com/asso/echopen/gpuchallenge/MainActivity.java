@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import com.asso.echopen.gpuchallenge.model.BitmapDisplayer;
 import com.asso.echopen.gpuchallenge.model.BitmapDisplayerFactory;
 import com.asso.echopen.gpuchallenge.ui.MainActionController;
+import com.asso.echopen.gpuchallenge.utils.Config;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,6 +24,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Config.getInstance(this);
         setContentView(R.layout.activity_main);
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.vMiddle);
         linearLayout.setBackgroundColor(Color.TRANSPARENT);

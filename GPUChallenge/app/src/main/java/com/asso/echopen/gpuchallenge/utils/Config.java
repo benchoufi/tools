@@ -39,6 +39,16 @@ public class Config {
 
     private static DisplayMetrics metrics;
 
+    private static boolean csv_data_pipe = false;
+
+    public static boolean getCVDataPipe() {
+        return csv_data_pipe;
+    }
+
+    public static void setCSVDataPipe(boolean csv_data_pipe) {
+        Config.csv_data_pipe = csv_data_pipe;
+    }
+
     private Config(Context context){
         this.context = context;
     }

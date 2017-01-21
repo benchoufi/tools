@@ -7,6 +7,7 @@ import android.support.v8.renderscript.Type;
 
 import com.asso.echopen.gpuchallenge.ScriptC_scanconversion;
 import com.asso.echopen.gpuchallenge.model.Data;
+import com.asso.echopen.gpuchallenge.utils.Config;
 import com.asso.echopen.gpuchallenge.utils.Constants;
 
 import java.io.IOException;
@@ -52,6 +53,79 @@ public class ScanConversion {
     private static int[] envelope_data;
 
     private static int[] num;
+
+    private static int[] index_counter;
+
+
+    private int[] image;
+
+    public int[] getImage() {
+        return image;
+    }
+
+    public void setImage(int[] image) {
+        this.image = image;
+    }
+
+    private Allocation indexSampLine;
+
+    public Allocation getIndexSampLine() {
+        return indexSampLine;
+    }
+
+    public void setIndexSampLine(Allocation indexSampLine) {
+        this.indexSampLine = indexSampLine;
+    }
+
+    private Allocation imageIndex;
+
+    public Allocation getImageIndex() {
+        return imageIndex;
+    }
+
+    public void setImageIndex(Allocation imageIndex) {
+        this.imageIndex = imageIndex;
+    }
+
+    private Allocation indexCounter;
+
+    public Allocation getIndexCounter() {
+        return indexCounter;
+    }
+
+    public void setIndexCounter(Allocation indexCounter) {
+        this.indexCounter = indexCounter;
+    }
+
+    private Allocation weightCoef;
+
+    public Allocation getWeightCoef() {
+        return weightCoef;
+    }
+
+    public void setWeightCoef(Allocation weightCoef) {
+        this.weightCoef = weightCoef;
+    }
+
+    private Allocation output_image;
+
+    public Allocation getOutput_image() {
+        return output_image;
+    }
+
+    public void setOutput_image(Allocation output_image) {
+        this.output_image = output_image;
+    }
+
+    private Allocation envelopeData;
+
+    public Allocation getEnvelopeData() {
+        return envelopeData;
+    }
+
+    public void setEnvelopeData(Allocation envelopeData) {
+        this.envelopeData = envelopeData;
+    }
 
     private Random random = new Random();
 
@@ -112,7 +186,11 @@ public class ScanConversion {
             throw new IllegalArgumentException("Data value must not be null");
         }
         assert (value != null);
-        envelope_data = value.getEnvelopeData();
+        if(!Config.singletonConfig.getCVDataPipe()) {
+            envelope_data = value.getEnvelopeData();
+            Config.singletonConfig.setCSVDataPipe(true);
+            System.out.println("I am there first");
+        }
         if (envelope_data == null) {
             throw new IllegalArgumentException("The Envelope Data must not be null");
         }
@@ -120,6 +198,36 @@ public class ScanConversion {
 
     public void setRenderScript(RenderScript renderScript) {
         this.renderScript = renderScript;
+        scriptC_scanconversion = new ScriptC_scanconversion(renderScript);
+
+        this.setIndexSampLine(Allocation.createSized(renderScript, Element.I32(renderScript), indexData.length));
+        indexSampLine.copyFrom(indexData);
+        scriptC_scanconversion.bind_index_samp_line(indexSampLine);
+
+        this.setImageIndex(Allocation.createSized(renderScript, Element.I32(renderScript), indexImg.length));
+        imageIndex.copyFrom(indexImg);
+        scriptC_scanconversion.bind_image_index(imageIndex);
+
+        this.setIndexCounter(Allocation.createSized(renderScript, Element.I32(renderScript), index_counter.length));
+        indexCounter.copyFrom(index_counter);
+        scriptC_scanconversion.bind_index_counter(indexCounter);
+
+        this.setWeightCoef(Allocation.createSized(renderScript, Element.F64(renderScript), weight.length));
+        weightCoef.copyFrom(weight);
+        scriptC_scanconversion.bind_weight_coef(weightCoef);
+
+        int Nz = Constants.PreProcParam.SCREEN_x;
+        int Nx = Constants.PreProcParam.SCREEN_z;
+        this.setImage(new int[Nz*Nx]);
+        this.setOutput_image(Allocation.createSized(renderScript, Element.I32(renderScript), image.length));
+        output_image.copyFrom(image);
+        scriptC_scanconversion.bind_output_image(output_image);
+
+        scriptC_scanconversion.invoke_set_PixelsCount(numPixels);
+        int N_samples = (int) Math.floor(Constants.PreProcParam.NUM_SAMPLES);
+        scriptC_scanconversion.invoke_set_NumLines(N_samples);
+
+        this.setEnvelopeData(Allocation.createSized(renderScript, Element.I32(renderScript), envelope_data.length));
     }
 
     public int[] getDataFromInterpolation() throws IOException {
@@ -238,6 +346,10 @@ public class ScanConversion {
         indexData = index_samp_line;
         indexImg = image_index;
         weight = weight_coef;
+        index_counter = new int[numPixels];
+        for (i = 0; i < numPixels;i++) {
+            index_counter[i] = i;
+        }
         return N_values;
     }
 
@@ -285,60 +397,20 @@ public class ScanConversion {
         }
     }
 
-    public int[] launchScript(int envelope_data[],   /*  The envelope detected and log-compressed data */
-                             int N_samples,        /*  Number of samples in one envelope line        */
+    public int[] launchScript(int envelope_data[]) {
 
-                             int index_samp_line[], /*  Index for the data sample number              */
-                             int image_index[],     /*  Index for the image matrix                    */
-                             double weight_coef[],     /*  The weight table                              */
-                             int N_values,         /*  Number of values to calculate in the image      */
+        int random_index = random.nextInt(envelope_data.length);
+        envelope_data[random_index] = random.nextInt(255);
 
-                             int image[]) {
-
-        scriptC_scanconversion = new ScriptC_scanconversion(renderScript);
-
-        Allocation envelopeData = Allocation.createSized(renderScript, Element.I32(renderScript), envelope_data.length);
         envelopeData.copyFrom(envelope_data);
         scriptC_scanconversion.bind_envelope_data(envelopeData);
-
-        Allocation indexSampLine = Allocation.createSized(renderScript, Element.I32(renderScript), index_samp_line.length);
-        indexSampLine.copyFrom(index_samp_line);
-        scriptC_scanconversion.bind_index_samp_line(indexSampLine);
-
-
-        Allocation imageIndex = Allocation.createSized(renderScript, Element.I32(renderScript), image_index.length);
-        imageIndex.copyFrom(image_index);
-        scriptC_scanconversion.bind_image_index(imageIndex);
-
-        int[] index_counter = new int[N_values];
-        int i;
-        for (i = 0; i <N_values;i++) {
-            index_counter[i] = i;
-        }
-        Allocation indexCounter = Allocation.createSized(renderScript, Element.I32(renderScript), index_counter.length);
-        indexCounter.copyFrom(index_counter);
-        scriptC_scanconversion.bind_index_counter(indexCounter);
-
-        Allocation weightCoef = Allocation.createSized(renderScript, Element.F64(renderScript), weight_coef.length);
-        weightCoef.copyFrom(weight_coef);
-        scriptC_scanconversion.bind_weight_coef(weightCoef);
-
-        Allocation output_image = Allocation.createSized(renderScript, Element.I32(renderScript), image.length);
-        output_image.copyFrom(image);
-        scriptC_scanconversion.bind_output_image(output_image);
-
-        scriptC_scanconversion.invoke_set_PixelsCount(N_values);
-        scriptC_scanconversion.invoke_set_NumLines(N_samples);
-
-        //scriptC_scanconversion.invoke_set_PixelsCount(10);
 
         long startTime2 = System.nanoTime();
         scriptC_scanconversion.invoke_process(indexCounter);
         long estimatedTime = System.nanoTime() - startTime2;
-        System.out.println("this is an estimate " + estimatedTime);
+        //System.out.println("this is an estimate " + estimatedTime);
 
         scriptC_scanconversion.get_output_image().copyTo(image);
-
         return image;
     }
 
@@ -373,30 +445,24 @@ public class ScanConversion {
 
         // set data.getEnvelopeData in envelope_data for measure performance that begins here
         long startTime = System.nanoTime();
-        compute_tables();
-        long estimatedTime = System.nanoTime() - startTime;
 
         int Nz = Constants.PreProcParam.SCREEN_x;
         int Nx = Constants.PreProcParam.SCREEN_z;
-        int[] image = new int[Nz * Nx];
+        this.setImage(new int[Nz * Nx]);
         num = new int[Nz * Nx];
-        int N_samples = (int) Math.floor(Constants.PreProcParam.NUM_SAMPLES);
 
         int random_index = random.nextInt(envelope_data.length);
         envelope_data[random_index] = random.nextInt(255);
 
-        long startTime2 = System.nanoTime();
-        launchScript(envelope_data, N_samples, this.indexData, this.indexImg, this.weight, this.numPixels, image);
+        long startTime0 = System.nanoTime();
+        launchScript(envelope_data);
+        long estimatedTime = System.nanoTime() - startTime0;
+        //System.out.println("launchScript estimate " + estimatedTime);
         //make_interpolation(envelope_data, N_samples, this.indexData, this.indexImg, this.weight, this.numPixels, image);
         // end of performance measure
 
-        for (int i = 0; i < Nz; i++) {
-            for (int j = 0; j < Nx ; j++) {
-                num[j*Nz + i] = image[j + Nx*i];
-            }
-        }
-
-        long estimatedTime2 = System.nanoTime() - startTime2;
-        return num;
+        long endTime = System.nanoTime() - startTime;
+        //System.out.println("endtime estimate " + endTime);
+        return image;
     }
 }
