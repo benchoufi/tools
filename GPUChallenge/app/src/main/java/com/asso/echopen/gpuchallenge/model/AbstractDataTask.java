@@ -23,6 +23,12 @@ abstract public class AbstractDataTask extends AsyncTask<Void, Void, Void> {
 
     protected MainActionController mainActionController;
 
+    private static int[] scanned_array;
+
+    public static int[] getScanned_array() {
+        return scanned_array;
+    }
+
     public AbstractDataTask(Activity activity, MainActionController mainActionController, ScanConversion scanConversion) {
         this.scanconversion = scanConversion;
         this.activity = activity;
@@ -31,14 +37,14 @@ abstract public class AbstractDataTask extends AsyncTask<Void, Void, Void> {
 
     protected void refreshUI(ScanConversion scanconversion) throws IOException {
         long startTime0 = System.nanoTime();
-        int[] scannedArray = scanconversion.getDataFromInterpolation();
+        scanned_array = scanconversion.getDataFromInterpolation();
         long scanconversion_estimatedTime = System.nanoTime() - startTime0;
         //System.out.println("set scan conversion estimate " + scanconversion_estimatedTime);
 
-        int[] colors = new int[scannedArray.length];
+        int[] colors = new int[scanned_array.length];
         int pixel;
-        for(int i = 0; i < scannedArray.length; i++) {
-            pixel = scannedArray[i];
+        for(int i = 0; i < scanned_array.length; i++) {
+            pixel = scanned_array[i];
             colors[i] = (pixel | (pixel << 8) | (pixel << 16)) | 0xFF000000;
         }
 
@@ -47,7 +53,7 @@ abstract public class AbstractDataTask extends AsyncTask<Void, Void, Void> {
             activity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    mainActionController.displayMainFrame(bitmap);
+                    //mainActionController.displayMainFrame(bitmap);
                 }
             });
         } catch (Exception e) {

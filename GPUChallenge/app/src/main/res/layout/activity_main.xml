@@ -15,6 +15,14 @@
             android:layout_height="wrap_content"
             android:text="@string/challenge_name" />
 
+        <RelativeLayout
+            android:id="@+id/glView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+        </RelativeLayout>
+
         <ImageView
             android:id="@+id/echo"
             android:layout_width="369dp"

@@ -43,7 +43,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="c0328e1e89dec07416e141a674a3a7e92cf4d609">
+        sha1="abd677792004e97f00af1530634ad94ffc9d1648">
         <dex dex="/Users/mehdibenchoufi/Desktop/Sites/echopen/tools/GPUChallenge/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_f9e35d3885ccbfc7832c34464b0be5b324d36a52/classes.dex" />
     </item>
     <item
@@ -70,7 +70,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="a98b90c362424943141125c35fa1abe6d1501794">
+        sha1="1b4f00e3a865b240da346c8c4eaca7773e9ab338">
         <dex dex="/Users/mehdibenchoufi/Desktop/Sites/echopen/tools/GPUChallenge/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_3ccdc11656bb56cc630ad1bb0f3a456d74600b85/classes.dex" />
     </item>
     <item

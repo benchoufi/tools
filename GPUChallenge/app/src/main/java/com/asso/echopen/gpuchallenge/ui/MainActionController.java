@@ -28,8 +28,8 @@ public class MainActionController {
     }
 
     public void displayMainFrame(Bitmap bitmap){
-        ImageView echoImage = (ImageView) findViewById(R.id.echo);
-        echoImage.setImageBitmap(bitmap);
-        echoImage.setColorFilter(Config.colorMatrixColorFilter);
+        //ImageView echoImage = (ImageView) findViewById(R.id.echo);
+        //echoImage.setImageBitmap(bitmap);
+        //echoImage.setColorFilter(Config.colorMatrixColorFilter);
     }
 }
